@@ -27,6 +27,9 @@ exports.productDetailFetch = async (req, res, next) =>
 
 exports.productUpdate = async (req, res, next) => {
   try {
+    if (req.file) {
+      req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
+    }
     const product = await Product.findByIdAndUpdate(
       req.product,
       req.body,
