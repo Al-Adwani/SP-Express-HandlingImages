@@ -1,6 +1,7 @@
 const express = require("express");
 const Product = require("../../db/models/Product");
 const upload = require("../../middleware/multer");
+const Category = require("../../db/models/Category");
 const {
   productListFetch,
   productCreate,
@@ -9,7 +10,6 @@ const {
   productDetailFetch,
   fetchProduct,
 } = require("./controllers");
-
 // Create a mini express application
 const router = express.Router();
 
@@ -24,7 +24,7 @@ router.param("productId", async (req, res, next, productId) => {
   }
 });
 
-router.post("/", upload.single("image"), productCreate);
+
 
 router.get("/", productListFetch);
 

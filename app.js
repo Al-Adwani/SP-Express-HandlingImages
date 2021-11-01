@@ -6,7 +6,7 @@ const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const path = require("path");
-
+const categoriesRoutes = require("./apis/catagory/catagory.router");
 const app = express();
 
 connectDB();
@@ -25,6 +25,8 @@ console.log("hii", path.join(__dirname, "media"));
 // Routes
 
 app.use("/api/products", productRoutes);
+app.use("/api/catagory", categoriesRoutes);
+
 app.use("/media", express.static(path.join(__dirname, "media")));
 app.use((req, res, next) => {
   res.status(404).json({ message: "Path not found" });
