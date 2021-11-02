@@ -1,7 +1,7 @@
 const express = require("express");
 const Product = require("../../db/models/Product");
 const upload = require("../../middleware/multer");
-const Category = require("../../db/models/Category");
+const Shop = require("../../db/models/Shop");
 const {
   productListFetch,
   productCreate,
