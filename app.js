@@ -8,7 +8,7 @@ const cors = require("cors");
 const path = require("path");
 const shopsRoutes = require("./apis/shops/shop.router");
 const app = express();
-
+const userRoutes = require("./apis/users/users.routes");
 connectDB();
 
 // Middleware
@@ -26,6 +26,7 @@ console.log("hii", path.join(__dirname, "media"));
 
 app.use("/api/products", productRoutes);
 app.use("/api/shops", shopsRoutes);
+app.use("/api/users", userRoutes);
 
 app.use("/media", express.static(path.join(__dirname, "media")));
 app.use((req, res, next) => {
