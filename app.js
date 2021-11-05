@@ -9,6 +9,8 @@ const path = require("path");
 const shopsRoutes = require("./apis/shops/shop.router");
 const app = express();
 const userRoutes = require("./apis/users/users.routes");
+const passport = require("passport");
+const { localStrategy } = require("./middleware/passport");
 connectDB();
 
 // Middleware
@@ -23,7 +25,8 @@ app.use((req, res, next) => {
 });
 console.log("hii", path.join(__dirname, "media"));
 // Routes
-
+app.use(passport.initialize());
+passport.use(localStrategy);
 app.use("/api/products", productRoutes);
 app.use("/api/shops", shopsRoutes);
 app.use("/api/users", userRoutes);
